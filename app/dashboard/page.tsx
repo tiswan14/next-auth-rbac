@@ -1,5 +1,9 @@
 import { auth } from "@/auth"
 
+export const metadata = {
+    title: "Dashboard",
+}
+
 const Dashboard = async () => {
     const session = await auth();
 

@@ -6,6 +6,7 @@ import { redirect } from "next/navigation";
 import { signIn } from "@/auth";
 import { AuthError } from "next-auth";
 
+
 export const signUpCredentials = async (preState: unknown, formData: FormData) => {
     const validatedFields = RegisterSchema.safeParse(Object.fromEntries(formData));
 
@@ -69,3 +70,4 @@ export const signInCredentials = async (prevState: unknown, formData: FormData) 
 
 
 };
+

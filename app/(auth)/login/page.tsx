@@ -1,8 +1,8 @@
-import FormLogin from "@/components/auth/form-login";
+import FormLogin from "@/app/components/auth/form-login";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-    title: "Login Akun Akun",
+    title: "Login Akun Anda",
 }
 const Register = () => {
     return (

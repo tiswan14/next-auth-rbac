@@ -1,19 +1,33 @@
 "use client";
-import { useActionState } from "react";
+import { useActionState, useState, useEffect } from "react";
 import Link from "next/link";
 import { signInCredentials } from "@/lib/action";
 import { LoginButton } from "./button";
 
 const FormLogin = () => {
   const [state, formAction] = useActionState(signInCredentials, null)
+
+  const [showMessage, setShowMessage] = useState(!!state?.message);
+
+  useEffect(() => {
+    if (state?.message) {
+      setShowMessage(true);
+      const timer = setTimeout(() => {
+        setShowMessage(false);
+      }, 2000); // 3 detik
+      return () => clearTimeout(timer);
+    }
+  }, [state?.message]);
   return (
     <form action={formAction} className="space-y-6">
-      {state?.message ? (
-        <div className="p-4 mt-4 text-sm text-red-800 rounded-lg bg-red-100" role="alert">
+      {showMessage && (
+        <div
+          className="p-4 mt-4 text-sm text-red-800 rounded-lg bg-red-100 transition-opacity duration-300"
+          role="alert"
+        >
           <span>{state?.message}</span>
         </div>
-      ) : null}
-
+      )}
 
       {/* Field Email */}
       <div>
@@ -22,7 +36,8 @@ const FormLogin = () => {
           type="email"
           name="email"
           placeholder="Masukkan email"
-          className="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg w-full p-2.5"
+          className="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg w-full p-2.5 
+                 focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500"
         />
         <div aria-live="polite" aria-atomic="true">
           <span className="text-sm text-red-500 mt-2">{state?.error?.email}</span>
@@ -36,7 +51,8 @@ const FormLogin = () => {
           type="password"
           name="password"
           placeholder="Masukan password"
-          className="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg w-full p-2.5"
+          className="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg w-full p-2.5 
+                 focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500"
         />
         <div aria-live="polite" aria-atomic="true">
           <span className="text-sm text-red-500 mt-2">{state?.error?.password}</span>
@@ -54,6 +70,8 @@ const FormLogin = () => {
         </Link>
       </p>
     </form>
+
+
   );
 }
 

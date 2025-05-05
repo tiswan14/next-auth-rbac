@@ -62,7 +62,7 @@ export const signInCredentials = async (prevState: unknown, formData: FormData) 
                 case "CredentialsSignin":
                     return { message: "Email atau password salah" };
                 default:
-                    return { message: "Terjadi kesalahan saat login" };
+                    return { message: "Email atau password salah" };
             }
         }
         throw error

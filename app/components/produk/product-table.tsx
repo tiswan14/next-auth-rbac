@@ -5,7 +5,7 @@ const ProductTable = async () => {
     const products = await getProuductByUser();
 
     if (!products || products.length === 0) {
-        return <h2 className="text-2xl text-center font-bold text-gray-900">Produk tidak ditemukan</h2>;
+        return <h2 className="text-2xl text-center font-bold text-gray-900">Tidak ada produk yang tersedia</h2>;
     }
 
     return (

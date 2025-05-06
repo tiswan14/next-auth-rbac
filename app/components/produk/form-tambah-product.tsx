@@ -13,7 +13,7 @@ const FormTambahProduct = () => {
                  focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500"
                 />
                 <div aria-live="polite" aria-atomic="true">
-                    <span className="text-sm text-red-500 mt-2">pesan yang belum ada</span>
+                    <span className="text-sm text-red-500 mt-2">segera lakukan ada</span>
                 </div>
             </div>
 
